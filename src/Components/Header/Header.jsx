@@ -1,9 +1,13 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 
 const Header = () => {
   const [scrolled, setscrolled] = useState(false);
+  const [search, setSearch] = useState(false);
+  const [ShowCart, setShowCart] = useState(false);
+
+  const { cartCount } = useContext(Context);
 
   const HandleScroll = () => {
     const offset = window.scrollY;
@@ -26,7 +30,7 @@ const Header = () => {
         }`}
       >
         <div className="container gx-0">
-          <NavLink>
+          <NavLink to="/">
             <img src={logo} alt="logo" className="site-logo" />
           </NavLink>
           <button
@@ -38,21 +42,31 @@ const Header = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/13944/13944814.png"
+              width="26"
+              height="26"
+              title=""
+              className="img-small"
+              alt=""
+            />
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mx-auto mb-lg-0 nav_ul">
+          <div
+            className="collapse navbar-collapse py-md-0 py-3"
+            id="navbarSupportedContent"
+          >
+            <ul className="navbar-nav mx-auto mb-lg-0 nav_ul py-3 py-md-0">
               <li className="nav_li">
-                <NavLink>Homepage</NavLink>
+                <NavLink to="/">Homepage</NavLink>
               </li>
               <li className="nav_li">
-                <NavLink>About</NavLink>
+                <NavLink to="/about">About</NavLink>
               </li>
               <li className="nav_li">
-                <NavLink>Health Products</NavLink>
+                <NavLink to="/products">Health Products</NavLink>
               </li>
               <li className="nav_li">
-                <NavLink>Contact Us</NavLink>
+                <NavLink to="/contact">Contact Us</NavLink>
               </li>
             </ul>
             <form className="cart1 d-flex align-items-center mx-4">
@@ -60,6 +74,10 @@ const Header = () => {
                 src="https://cdn-icons-png.flaticon.com/512/1040/1040225.png"
                 width="26"
                 height="26"
+                alt=""
+                data-bs-toggle="modal"
+                data-bs-target="#examplemodal"
+                onClick={() => setSearch(true)}
                 className="img-small mx-3"
               ></img>
               <NavLink to="">
@@ -67,6 +85,11 @@ const Header = () => {
                   src="https://cdn-icons-png.flaticon.com/512/4903/4903878.png"
                   width="26"
                   height="26"
+                  alt=""
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasRight"
+                  aria-controls="offcanvasRight"
+                  onClick={() => setShowCart(true)}
                   className="img-small"
                 ></img>
               </NavLink>
