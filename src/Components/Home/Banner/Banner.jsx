@@ -46,7 +46,7 @@ const Banner = () => {
                       and handled with care. Shop with confidence and experience
                       hassle-free, reliable service for all your medical needs.
                     </p>
-                    <div className="bannerbtns">
+                    <div className="bannerbtns py-3">
                       <button className="main_btn">Shop Now</button>
                     </div>
                   </div>
@@ -89,7 +89,7 @@ const Banner = () => {
                       protected—with medical support that cares for every part
                       of you.
                     </p>
-                    <div className="bannerbtns">
+                    <div className="bannerbtns py-3">
                       <button className="main_btn">Shop Now</button>
                     </div>
                   </div>
