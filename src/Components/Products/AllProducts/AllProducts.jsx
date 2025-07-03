@@ -1,7 +1,16 @@
+import useFetch from "../../../hooks/useFetch";
 import Products from "../Products";
 
 const AllProducts = () => {
-  return <Products />;
+  const { data } = useFetch("/api/products?populate=*");
+
+  const products = data?.data || [];
+
+  return (
+    <div className="container">
+      <Products products={products} title="Health Products" />
+    </div>
+  );
 };
 
 export default AllProducts;
