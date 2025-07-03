@@ -72,6 +72,11 @@ ul {
   z-index: 1060;
   animation: stickHeader 0.3s ease forwards;
 }
+
+.nav-title {
+  text-decoration: none;
+}
+
 @keyframes stickyHeader {
   0% {
     transform: translateY(-100px);
@@ -80,6 +85,16 @@ ul {
     transform: translateY(0px);
   }
 }
+
+.cart-total--item {
+  background: var(--dark-color);
+  color: #fff;
+  padding: 3px 8px;
+  font-size: 0.8rem;
+  border-radius: 100%;
+  text-decoration: none;
+}
+
 .NewLetter {
   padding: 6rem 0;
 }
@@ -160,7 +175,6 @@ ul {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 567px) {
-  /*       */
   .navbar-toggler:focus {
     box-shadow: none !important;
   }
