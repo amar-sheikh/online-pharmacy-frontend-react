@@ -1,47 +1,29 @@
-import img from "../../../assets/lifecare.jpg";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./Brand.css";
 
-const Brand = () => {
+const Brand = ({ brand }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="container gx-0 py-5 my-5 Full_main_brand">
-      <h4 className="py-3 main_h2">Top Brands</h4>
-      <div className="row gx-0 main_brand">
-        <div className="col-md-2 col-6">
-          <div className="home_brand text-center">
-            <img src={img} alt="GSK" className="img-fluid" />
-            <h4 className="Brand_title">GSK</h4>
+    <div className="carousel-container">
+      <h4 className="main_h2 py-5">Top Brands</h4>
+      <div className="carousel">
+        {brand?.data?.map((item, index) => (
+          <div
+            key={item.id}
+            className="carousel__item"
+            style={{ "--i": index }}
+            onClick={() => navigate(`/brand/${item.id}`)}
+          >
+            <img
+              src={`http://localhost:1337${item.img?.url}`}
+              alt={item.title || "Brand"}
+              className="carousel-image"
+            />
+            <h4 className="Brand_title">{item.title}</h4>
           </div>
-        </div>
-        <div className="col-md-2 col-6">
-          <div className="home_brand text-center">
-            <img src={img} alt="Abbott" className="img-fluid" />
-            <h4 className="Brand_title">Abbott</h4>
-          </div>
-        </div>
-        <div className="col-md-2 col-6">
-          <div className="home_brand text-center">
-            <img src={img} alt="Himalaya" className="img-fluid" />
-            <h4 className="Brand_title">Himalaya</h4>
-          </div>
-        </div>
-        <div className="col-md-2 col-6">
-          <div className="home_brand text-center">
-            <img src={img} alt="Pfizer" className="img-fluid" />
-            <h4 className="Brand_title">Pfizer</h4>
-          </div>
-        </div>
-        <div className="col-md-2 col-6">
-          <div className="home_brand text-center">
-            <img src={img} alt="Teva" className="img-fluid" />
-            <h4 className="Brand_title">Teva</h4>
-          </div>
-        </div>
-        <div className="col-md-2 col-6">
-          <div className="home_brand text-center">
-            <img src={img} alt="Sandoz" className="img-fluid" />
-            <h4 className="Brand_title">Sandoz</h4>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
