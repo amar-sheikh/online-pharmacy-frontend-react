@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
 import { useContext, useState, useEffect } from "react";
+import { Context } from "../../utils/Context";
+import Cart from "../Cart/Cart";
+import Search from "./Search/Search";
 
 const Header = () => {
   const [scrolled, setscrolled] = useState(false);
@@ -77,8 +80,13 @@ const Header = () => {
                 alt=""
                 data-bs-toggle="modal"
                 data-bs-target="#examplemodal"
-                onClick={() => setSearch(true)}
-                className="img-small mx-3"
+                onClick={() => {
+                  setSearch(true);
+                  document
+                    .querySelector(".navbar-collapse.show")
+                    ?.classList.remove("show");
+                }}
+                className={`img-small mx-3 ${scrolled ? "d-none" : ""}`}
               ></img>
               <NavLink to="">
                 <img
@@ -92,11 +100,17 @@ const Header = () => {
                   onClick={() => setShowCart(true)}
                   className="img-small"
                 ></img>
+                {!!cartCount && (
+                  <span className="cart-total--item">{cartCount}</span>
+                )}
               </NavLink>
             </form>
           </div>
         </div>
       </nav>
+      {ShowCart && <Cart setShowCart={setShowCart} />}
+      <Search setSearch={setSearch} />
+      {/* {search && <Search setSearch={setSearch} />} */}
     </>
   );
 };
