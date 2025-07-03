@@ -6,8 +6,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/scrollbar";
+import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/products");
+  };
+
   return (
     <div className="banner_main">
       <Swiper
@@ -47,7 +54,9 @@ const Banner = () => {
                       hassle-free, reliable service for all your medical needs.
                     </p>
                     <div className="bannerbtns py-3">
-                      <button className="main_btn">Shop Now</button>
+                      <button className="main_btn" onClick={handleClick}>
+                        Shop Now
+                      </button>
                     </div>
                   </div>
                 </div>
