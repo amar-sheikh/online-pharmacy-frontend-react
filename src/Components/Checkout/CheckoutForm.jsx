@@ -1,3 +1,5 @@
+// This flow uses Stripe as the payment gateway
+
 import {
   useStripe,
   useElements,
