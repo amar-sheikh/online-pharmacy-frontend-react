@@ -98,11 +98,8 @@ This frontend communicates with a **Strapi** backend to:
 ## 📁 Project Setup
 
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
+cp .env.example .env   # Set env variables {strapi auth token}
+npm install axios
 npm run dev
-
-# Visit:
-http://localhost:5173
+# Visit: http://localhost:5173
